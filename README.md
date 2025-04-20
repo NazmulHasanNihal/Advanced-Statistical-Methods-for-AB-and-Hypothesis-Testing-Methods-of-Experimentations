@@ -1,0 +1,2 @@
+# Advanced-Statistical-Methods-for-AB-and-Hypothesis-Testing-Methods-of-Experimentations
+This project will showcase advanced statistical methods for A/B testing and hypothesis testing, applying various techniques to experimentations, statistical and data analysis. This project covers Normality tests, Variance tests, T-tests, Z-tests, Non-parametric, Chi-Square tests and many more to help make data-driven decisions in experiments. 
