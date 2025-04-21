@@ -1,6 +1,8 @@
 # Advanced Statistical Methods for AB and Hypothesis Testing Methods of Experimentations
 This project will showcase advanced statistical methods for A/B testing and hypothesis testing, applying various techniques to experimentations, statistical and data analysis. This project covers Normality tests, Variance tests, T-tests, Z-tests, Non-parametric, Parametric, Chi-Square tests and many more to help make data-driven decisions in experiments. 
 
+---
+
 ## Shapiro-Wilk Test (Normality Test)
 
 In many statistical tests (**t-tests**, **ANOVA**, **linear regression**) we assume that the data comes from a normal distribution. If this assumption is violated, the results of these tests might not be valid.
@@ -21,14 +23,17 @@ Using `Iris Plants Database` in this test. The dataset contains a set of `150 re
 
 ### Shapiro-Wilk Normality Test Results
 `1. Sepal Length: p-value = 0.0102 (not normally distributed, reject null hypothesis).`
+
 `2. Sepal Width: p-value = 0.0752 (normally distributed, fail to reject null hypothesis).`
+
 `3. Petal Length: p-value = 7.545419569615864e-10 (not normally distributed, reject null hypothesis).`
+
 `4. Petal Width: p-value = 1.8647596517271003e-08 (not normally, reject null hypothesis).`
 
 - Sepal Width is normally distributed, so parametric tests can be used.
 - Sepal Length, Petal Length, and Petal Width are not normally distributed. Here we have to use non-parametric tests or applying data transformation for these columns.
 
-
+---
 
 ## Levene's Test for Equal Variance (Homogeneity of Variance)
 
@@ -62,6 +67,8 @@ Using Housing Price Data for this test. This dataset has 3 Group of City. City 1
 ### Levene's Test for Equality of Variance
 
 **The p-value is 0.0006, which is less than 0.05. This indicates that the variances of house prices across the three cities are significantly different.**
+
+---
 
 ## Independent T-test or Two Sample T-test
 
@@ -107,4 +114,63 @@ Python code to generate a perfect dataset for performing an Independent T-test. 
 
 - There is a statistically significant difference between Group A and Group B. Since the p-value is extremely small, this result strongly indicates that the difference between the two groups is not due to random chance.
 
+---
+## Paired Sample T-Test (Before vs After Campaign)
+
+A Paired Sample T-test (also known as the Dependent Sample T-test) is a statistical test used to compare the means of two related groups. The test is used to determine whether there is a statistically significant difference between the two related groups.
+
+Why and When we should use it ?
+
+- Paired Sample T-test when we want to assess the effect of a treatment or intervention on a group of subject by comparing therir measurements before and after the treatment or intervention.
+
+- The same participants are measured in two conditions or at two points in time
+
+- The observations are not independent but are paired based on some criteria
+
+- **Before and After Studies:** When measuring the same group of individuals at two different times
+
+- **Matched Pairs:** When each participant is matched with another participant who has similar characteristics, and you want to compare their responses in different conditions.
+
+- **Repeated Measures:** When having repeated measurements from the same individuals under different conditions.
+
+### Dataset
+#### Data Summary
+**Total Participants:** 30
+
+**Columns:**
+
+- **Participant:** Unique identifier for each participant (1 through 5).
+
+- **Before Weight (kg):** The weight of each participant before the diet program.
+
+- **After Weight (kg):** The weight of each participant after the diet program.
+
+- **Weight Loss (kg):** The amount of weight lost by each participant.
+
+- **Weight Loss (%):** The percentage of weight lost by each participant.
+
+- **Difference :** Before Weight and After Weight difference 
+
+### Shapiro-Wilk Test for Normality of Differences
+
+`Shapiro-Wilk Test: Statistic = 0.984, p-value = 0.91296`
+
+`The differences between before and after weights appear to be normally distributed. We fail to reject the null hypothesis of normality.`
+
+**Since the p-value is greater than 0.05, we fail to reject the null hypothesis and conclude that the differences between the before and after weights appear to be normally distributed. This means the normality assumption for performing a Paired Sample T-Test is met.**
+
+![ alt text](img/pairedsamplettest1.png)
+![ alt text](img/pairedsamplettest3.png)
+
+### Paired T-test Result
+
+![ alt text](img/pairedsamplettest2.png)
+
+`Paired Sample T-Test: T-statistic = 14.974, p-value = 0.00000`
+
+`Reject the null hypothesis. There is a significant difference between before and after weights, indicating the diet program had an effect.`
+
+**The p-value is less than 0.05, so we reject the null hypothesis and conclude that there is a significant difference between the before and after weights. This suggests that the diet program had a significant effect on the participants' weight loss.**
+
+----
 
