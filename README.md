@@ -174,3 +174,124 @@ Why and When we should use it ?
 
 ----
 
+## ANOVA (Analysis of Variance)
+
+ANOVA (Analysis of Variance) is a statistical method used to analyze differences between group means and determine whether any of the group means are statistically significantly different from each other. It is essentially used to test if there is a significant variation between multiple groups based on one or more factors.
+
+ANOVA is commonly used when comparing three or more groups or conditions. It is an extension of the t-test, which is used when comparing only two groups.
+
+**Why Use ANOVA?**
+
+- **Compare Means of 2 Groups:** Test if group means differ.
+
+- **Check Variability:** Determine if differences are due to the factor or random noise.
+
+- **Avoid Multiple Tests:** Handles multiple comparisons in one test.
+
+**When to Use ANOVA?**
+
+- **2 Groups:** Comparing three or more groups.
+
+- **Compare Means:** Based on one or more factors.
+
+- **Continuous Data:** Assumes normal distribution.
+
+- **Independent Groups:** Different subjects in each group.
+
+- **Equal Variances:** Assumes similar variances across groups.
+
+**Types of ANOVA**
+
+- **One-Way:** Tests one factor.
+
+- **Two-Way:** Tests two factors.
+
+- **Repeated Measures:** For repeated measurements on the same subjects.
+
+### Dataset
+
+#### Data Summary
+
+**Size:** 90 rows
+
+**Columns:**
+
+- **score:** Continuous variable representing exam scores.
+
+- **method:** Categorical variable representing the teaching method used (Method A, Method B, Method C).
+
+- **gender:** Categorical variable representing the gender of the students (Male, Female).
+
+**Groups:**
+
+- **Teaching Methods:** 3 categories (Method A, Method B, Method C).
+
+- **Gender:** 2 categories (Male, Female).
+
+- **Scores:** Exam scores are generated randomly with different means and standard deviations for each method:
+
+**Method A: Mean = 75, Std = 10**
+
+**Method B: Mean = 80, Std = 12**
+
+**Method C: Mean = 85, Std = 8**
+
+              score	         method	       gender
+    0	79.967142	Method A	Male
+    1	73.617357	Method A	Male
+    2	81.476885	Method A	Male
+    3	90.230299	Method A	Male
+    4	72.658466	Method A	Male
+
+### Shapiro-Wilk Test (Normality Check)
+```markdown
+Shapiro-Wilk Test Results:
+
+Method A: W-statistic=0.9751, p-value=0.6868
+Method A: The data is normally distributed.
+
+Method B: W-statistic=0.9837, p-value=0.9130
+Method B: The data is normally distributed.
+
+Method C: W-statistic=0.9628, p-value=0.3654
+Method C: The data is normally distributed.
+```
+![ alt text](img/ANOVA1.png)
+![ alt text](img/ANOVA2.png)
+
+### Levene’s Test (Equality of Variances)
+```markdown
+Levene's Test: W-statistic=2.3198, p-value=0.1043
+Levene's Test: The variances are equal across groups.
+```
+![ alt text](img/ANOVA3.png)
+
+### Independent T-test (comparing Method A vs. Method B vs. Method C)
+```markdown
+Independent T-Test (Method A vs Method B): t-statistic=-2.0720, p-value=0.0427
+The means of Method A and Method B are significantly different.
+
+Independent T-Test (Method B vs Method C): t-statistic=-2.6206, p-value=0.0112
+The means of Method B and Method C are significantly different.
+
+Independent T-Test (Method A vs Method C): t-statistic=-5.4706, p-value=0.0000
+The means of Method A and Method C are significantly different.
+```
+### One-Way ANOVA (comparing all three methods)
+```markdown
+One-Way ANOVA (Method A, B, C): F-statistic=12.0572, p-value=0.0000
+One-Way ANOVA: There is a significant difference between the methods.
+```
+**The One-Way ANOVA test revealed a significant difference between the means of the three teaching methods (Method A, Method B, and Method C).This suggests that at least one of the teaching methods leads to significantly different student scores compared to the others.**
+
+----
+
+
+
+
+
+
+
+
+
+
