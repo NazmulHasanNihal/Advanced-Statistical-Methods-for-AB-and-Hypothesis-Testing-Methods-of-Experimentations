@@ -17,7 +17,7 @@ When not to use the **Shapiro-Wilk**:
 
 ### Dataset
 Using `Iris Plants Database` in this test. The dataset contains a set of `150 records` under `5 attributes` - `Petal Length`, `Petal Width`, `Sepal Length`, `Sepal width` and Class(Species).
-![ alt text](img\shapiro-wilk.png)
+![ alt text](img/shapiro-wilk.png)
 
 ### Shapiro-Wilk Normality Test Results
 `1. Sepal Length: p-value = 0.0102 (not normally distributed, reject null hypothesis).`
@@ -27,6 +27,8 @@ Using `Iris Plants Database` in this test. The dataset contains a set of `150 re
 
 - Sepal Width is normally distributed, so parametric tests can be used.
 - Sepal Length, Petal Length, and Petal Width are not normally distributed. Here we have to use non-parametric tests or applying data transformation for these columns.
+
+
 
 ## Levene's Test for Equal Variance (Homogeneity of Variance)
 
@@ -43,7 +45,7 @@ Levene's test is used to check the assumption of equal variances (also known as 
 ### Dataset
 Using Housing Price Data for this test. This dataset has 3 Group of City. City 1, City 2, City 3 with Price Columns.
 
-![ alt text](img\levenestest.png)
+![ alt text](img/levenestest.png)
 
 ### Shapiro-Wilk Normality Test Results
 
@@ -55,7 +57,54 @@ Using Housing Price Data for this test. This dataset has 3 Group of City. City 1
 
 - **City 3:** The p-value is 0.6759, which is greater than 0.05, indicating that the data is normally distributed.
 
+![ alt text](img/levenestest2.png)
+
 ### Levene's Test for Equality of Variance
 
 **The p-value is 0.0006, which is less than 0.05. This indicates that the variances of house prices across the three cities are significantly different.**
+
+## Independent T-test or Two Sample T-test
+
+Independent T-test also called two-sample T-test. It is a statistical method used to compare the means of two indenpendent groups to see statistically significant difference between them.
+
+Why and When we should use it ?
+- We use it to test hypotheses about group differences and it help us to understand any observed difference is real or due to random chance.
+- There is two independent groups.
+- Comparing the means of two numeric/continuous variable.
+- Data should be normally distributed.
+- Variances are assumed to be equal or testable.
+
+### Dataset
+
+Python code to generate a perfect dataset for performing an Independent T-test. We'll create two independent groups (Group A and Group B) with normally distributed data, ensuring that they have different means, which will give us a noticeable difference when performing the T-test.
+
+        Score      Group
+    0  54.967142     A
+    1  48.617357     B
+    2  56.476885     A
+    3  65.230299     B
+    4  47.658466     A
+
+### Normality Test (Shapiro-Wilk Test)
+**Normality Check:**
+
+**Group A:** The p-value is 0.0.8290, which is greater than 0.05, indicating that the data is normally distributed.
+
+**Group B:** The p-value is 0.2498, which is greater than 0.05, indicating that the data is normally distributed.
+![ alt text](img/independent_t_1.png)
+
+### Levene's Test for Equality of Variance
+
+![ alt text](img/independent_t_2.png)
+
+- The p-value is 0.5148 for Levene’s Test is greater than 0.05, which means we fail to reject the null hypothesis (H₀).
+
+- The variances of Group A and Group B are not significantly different, and we can assume that both groups have equal variances. This is an important assumption for performing the Independent T-test.
+
+### Independent T-test Result
+
+- The p-value is 0.0000 extremely small (much less than 0.05), which means we reject the null hypothesis (H₀).
+
+- There is a statistically significant difference between Group A and Group B. Since the p-value is extremely small, this result strongly indicates that the difference between the two groups is not due to random chance.
+
 
