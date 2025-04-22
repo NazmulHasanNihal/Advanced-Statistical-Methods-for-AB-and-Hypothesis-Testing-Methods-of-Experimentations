@@ -1,7 +1,18 @@
 # Advanced Statistical Methods for AB and Hypothesis Testing Methods of Experimentations
-This project will showcase advanced statistical methods for A/B testing and hypothesis testing, applying various techniques to experimentations, statistical and data analysis. This project covers Normality tests, Variance tests, T-tests, Z-tests, Non-parametric, Parametric, Chi-Square tests and many more to help make data-driven decisions in experiments. 
+This project will showcase advanced statistical methods for A/B testing and hypothesis testing, applying various techniques to experimentations, statistical and data analysis. This project covers Normality tests, Variance tests, T-tests, Z-tests, Non-parametric, Parametric, Chi-Square tests, Bayesian Methods and many more to help make data-driven decisions in experiments. 
 
----
+| **Test/Method**                        | **Data Type**                          | **Assumptions**                         | **When to Use**                                | **Key Focus**                                  | **Advantages**                                       | **Disadvantages**                                   | **Use Case Example**                                   |
+|----------------------------------------|----------------------------------------|-----------------------------------------|------------------------------------------------|-------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|--------------------------------------------------------|
+| **Parametric Tests**                   | Continuous, Normal Distribution        | Normality, Homogeneity of Variance      | When data is normally distributed and continuous | Estimating population parameters (e.g., means)   | More powerful with normal data, precise estimates   | Sensitive to outliers, assumes normality            | Comparing average test scores of students in two different schools (assumes normal distribution) |
+| **Non-Parametric Tests**               | Ordinal, Categorical, Non-Normal      | No assumptions on distribution          | When data is non-normal, ordinal, or small sample | Comparing ranks or medians                       | Flexible, no distributional assumptions             | Less powerful than parametric tests in normal data   | Analyzing customer satisfaction ratings (Likert scale data) |
+| **Bayesian Methods**                   | Any data type                          | Prior knowledge, Likelihood function    | When incorporating prior knowledge, model uncertainty | Estimating parameters, predictions, and uncertainty | Incorporates prior beliefs, provides probability distribution | Requires choosing priors, can be computationally expensive | Estimating the probability of stock price movements based on historical data and expert opinions |
+| **Chi-Square Tests**                   | Categorical                            | Independence, Large sample sizes        | When testing relationships between categorical variables | Testing independence or goodness of fit          | Easy to use with categorical data, robust for large samples | Can’t be used with small sample sizes or continuous data | Analyzing whether there is a relationship between gender and voting preference (categorical variables) |
+| **Multivariate and Advanced Methods**  | Multivariate (Continuous, Categorical) | Multivariate normality, Linearity       | When analyzing multiple variables or complex models | Examining relationships across multiple variables | Analyzes complex relationships and interactions    | Assumes linear relationships, can be complex to interpret | Analyzing the effect of marketing strategies on sales, customer age, and income levels |
+
+----
+# Parametric Tests
+
+----
 
 ## Shapiro-Wilk Test (Normality Test)
 
@@ -286,11 +297,63 @@ One-Way ANOVA: There is a significant difference between the methods.
 
 ----
 
+## Correlation Coefficient
+ Correlation Coefficient is a statistical measure that expresses the extent to which two variables are linearly related. it shows the strength and direction of the relationship between two variables. The most common correlation coefficient is the Pearson correlation coefficient.
 
+ **Why and When do we use it ?**
 
+ - **Identifying Relationships:** It helps to understand if and how strongly two variables are related.
 
+ - **Prediction:** It is used in predictive analytics, especially for regression models, where understanding relationships between variables can help predict outcomes.
 
+ - **Decision Making:** In business, economics, or science, knowing the strength and direction of relationships between variables can guide decision-making.
 
+ - when to determine if there is a linear relationship between two continuous variables.
+ 
+ - When to measure the strength and direction of the relationship.
+ - When the data is approximately normally distributed (for Pearson correlation).
+
+ **Example Use:**
+- **Economics:** Studying the relationship between income and education level.
+
+- **Health:** Investigating the correlation between age and blood pressure.
+
+- **Sales:** Analyzing the relationship between advertising spending and sales performance.
+
+### Dataset
+
+	            X	            Y
+    0	54.967142	47.890288
+    1	48.617357	46.514130
+    2	56.476885	54.763313
+    3	65.230299	61.218912
+    4	47.658466	46.852038
+
+![ alt text](img/CorrelationCoefficient1.png)
+
+### Shapiro-Wilk Test
+```markdown
+Shapiro-Wilk Test for X: Statistic = 0.9899, p-value = 0.6552
+Shapiro-Wilk Test for Y: Statistic = 0.9906, p-value = 0.7143
+X is normally distributed (fail to reject the null hypothesis).
+Y is normally distributed (fail to reject the null hypothesis).
+```
+![ alt text](img/CorrelationCoefficient2.png)
+![ alt text](img/CorrelationCoefficient3.png)
+
+### Correlation Coefficient
+
+           X         Y
+    X  1.000000  0.872404
+    Y  0.872404  1.000000
+    Correlation Coefficient between X and Y: 0.8724042787137856
+```markdown
+Pearson Correlation: r=0.8724, p-value=0.0000
+```
+
+**Since p < 0.05, we reject the null hypothesis at the 5% level of significance. Therefore, we may conclude that the correlation coefficient between X and Y is statistically significant, indicating a strong positive linear relationship between the two variables.**
+
+----
 
 
 
