@@ -355,6 +355,54 @@ Pearson Correlation: r=0.8724, p-value=0.0000
 
 ----
 
+# Non-Parametric Tests
+
+----
+
+## Mann-Whitney U Test
+
+The Mann-Whitney U test is a non-parametric test used to determine whether there is a difference between two independent groups on a continuous or ordinal variable. It is often used as an alternative to the independent t-test when the data is not normally distributed or when the assumption of homogeneity of variance is violated.
+
+**Why to use it ?**
+
+- **Non-parametric nature:** Unlike the t-test, it does not assume that the data follows a normal distribution, making it ideal for non-normally distributed data.
+
+- **Ordinal or continuous data:** It can be used on ordinal data or when the data cannot be assumed to be normally distributed.
+
+- **Comparing two independent groups:** It is particularly useful when comparing two groups that are independent of each other.
+
+**When to use it**
+
+- When we want to compare two independent groups but cannot assume that the data follows a normal distribution.
+
+- When the data is ordinal (e.g., rankings) or continuous but non-normal.
+
+- When sample sizes are small or unequal between the two groups.
+
+- When the assumption of equal variances in the groups (required for the independent t-test) is not met.
+
+### Dataset
+          Class A Scores	Class B Scores	 Class A Study Hours	Class B Study Hours	Class A  Participation	Class B Participation
+    0	79.967142	   72.779521	      4.281239	              6.174740	                9.582064	       9.051084
+    1	73.617357	   102.227338	      4.721512	              7.743561	                6.181225	       9.262186
+    2	81.476885	   79.838033	      3.340498	              4.736304	                10.805589	       7.003946
+    3	90.230299	   67.307469	      3.205690	              5.410208	                5.196298	       9.010958
+    4	72.658466	   89.870539	      6.218789	              5.294205	                9.173714	       9.144759
+
+This dataset includes test scores, study hours, and participation scores for two groups of students (Class A and Class B), with 30 observations each.
+
+![ alt text](img/MannWhitneyUTest.png)
+
+### Mann-Whitney U Test
+
+**Interpretation:**
+
+- U Statistic: 310.0
+- P-value: 0.0392 (rounded)
+
+**Since the p-value < 0.05, we reject the null hypothesis, indicating that there is a statistically significant difference in test scores between Class A and Class B.**
+
+----
 
 
 
