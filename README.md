@@ -404,5 +404,56 @@ This dataset includes test scores, study hours, and participation scores for two
 
 ----
 
+## Wilcoxon Signed-Rank Test
+
+The Wilcoxon Signed-Rank Test is a non-parametric statistical test used to determine whether there is a significant difference between the paired observations. It is the non-parametric equivalent of the paired sample t-test and is used for comparing two related samples or measurements taken from the same group.
+
+**Why We Use It:**
+- The Wilcoxon Signed-Rank Test is used when the data are paired and do not meet the assumptions required for the paired t-test (e.g., normality).
+
+- It is useful for assessing whether the median of the differences between the pairs is zero, which means there is no difference between the two conditions being compared.
+
+- This test is particularly appropriate for small sample sizes and data with outliers or skewed distributions.
+
+**When to Use It:**
+- When comparing two related or paired samples.
+
+- When the data are ordinal, interval, or ratio but do not meet the assumptions of normality.
+
+- It is commonly used in before-and-after experiments or matched-pair studies.
+
+### Dataset
+
+- Number of Students: 30
+
+- Before Training Scores: Randomly generated integer scores between 40 and 70, representing test scores before training.
+
+- After Training Scores: Scores derived by adding a slight improvement (random integers between 3 and 12) to the original scores, with added random noise (normally distributed) to simulate variability.
+
+#### Before and After Training Scores
+
+![ alt text](img/WilcoxonSignedRankTest1.png)
+
+#### individual students (before and after)
+
+![ alt text](img/WilcoxonSignedRankTest2.png)
+
+#### Difference between Before and After Training scores
+
+![ alt text](img/WilcoxonSignedRankTest3.png)
+
+### Wilcoxon Signed-Rank Test
+
+```markdown
+Test Statistic: 0.0
+P-value: 1.862645149230957e-09
+Reject the null hypothesis: There is a significant difference in scores before and after training.
+```
+
+**Interpretation:**
+
+Since the p-value is much smaller than the significance level (α = 0.05), we reject the null hypothesis. There is a significant difference in the test scores before and after the training, indicating that the training had an impact on the students' performance.
+
+----
 
 
