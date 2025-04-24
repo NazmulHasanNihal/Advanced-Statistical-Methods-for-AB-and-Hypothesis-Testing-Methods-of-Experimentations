@@ -524,5 +524,56 @@ Since the p-value (0.00012) is less than the commonly used significance level of
 
 ----
 
+## Chi-Square Test of Independence
 
+The Chi-Square Test of Independence is a statistical test used to determine if there is a significant relationship between two categorical variables. It tests whether the distribution of one variable is independent of the distribution of the other variable.
+
+Why we use it ?
+
+- We use this test to check if two categorical variables are independent or associated.
+
+When we use it ?
+
+- The Chi-Square Test of Independence is used when you have two categorical variables and you want to see if there is a relationship between them.
+
+- The variables should be independent and come from random samples.
+
+- The categories within the variables should be mutually exclusive.
+
+### Data Description
+           Gender	Preference
+    0	Male	    C
+    1	Female	    B
+    2	Male	    C
+    3	Male	    C
+    4	Male	    A
+
+#### Data Summary
+**Gender:**
+
+**Unique values:** 2 (Male, Female)
+
+**Most frequent value:** Male (1017 occurrences)
+
+**Preference:**
+
+**Unique values:** 3 (A, B, C)
+
+**Most frequent value:** A (698 occurrences)
+
+#### Data Visualization
+![ alt text](img/ChiSquareTestofIndependence.png)
+
+### Chi-Square Test
+```markdown
+Chi-Square Statistic: 0.5701812407485305
+p-value: 0.7519461095939004
+Degrees of Freedom: 2
+Expected Frequencies: 
+[[339.972 332.1   311.928]
+ [351.028 342.9   322.072]]
+Fail to reject the null hypothesis: No significant relationship between the variables.
+```
+
+**Since the p-value is much greater than 0.05, we fail to reject the null hypothesis. This suggests that there is no significant relationship between the gender and preference variables in this dataset. In other words, gender does not appear to influence preference significantly.**
 
