@@ -1,13 +1,11 @@
 # Advanced Statistical Methods for AB and Hypothesis Testing Methods of Experimentations
-This project will showcase advanced statistical methods for A/B testing and hypothesis testing, applying various techniques to experimentations, statistical and data analysis. This project covers Normality tests, Variance tests, T-tests, Z-tests, Non-parametric, Parametric, Chi-Square tests, Bayesian Methods and many more to help make data-driven decisions in experiments. 
+This project will showcase advanced statistical methods for A/B testing and hypothesis testing, applying various techniques to experimentations, statistical and data analysis. This project covers `Normality tests`, `Variance tests`, `T-tests`, `Non-parametric`, `Parametric`, `Chi-Square tests` to help make data-driven decisions in experiments. 
 
 | **Test/Method**                        | **Data Type**                          | **Assumptions**                         | **When to Use**                                | **Key Focus**                                  | **Advantages**                                       | **Disadvantages**                                   | **Use Case Example**                                   |
 |----------------------------------------|----------------------------------------|-----------------------------------------|------------------------------------------------|-------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|--------------------------------------------------------|
 | **Parametric Tests**                   | Continuous, Normal Distribution        | Normality, Homogeneity of Variance      | When data is normally distributed and continuous | Estimating population parameters (e.g., means)   | More powerful with normal data, precise estimates   | Sensitive to outliers, assumes normality            | Comparing average test scores of students in two different schools (assumes normal distribution) |
 | **Non-Parametric Tests**               | Ordinal, Categorical, Non-Normal      | No assumptions on distribution          | When data is non-normal, ordinal, or small sample | Comparing ranks or medians                       | Flexible, no distributional assumptions             | Less powerful than parametric tests in normal data   | Analyzing customer satisfaction ratings (Likert scale data) |
-| **Bayesian Methods**                   | Any data type                          | Prior knowledge, Likelihood function    | When incorporating prior knowledge, model uncertainty | Estimating parameters, predictions, and uncertainty | Incorporates prior beliefs, provides probability distribution | Requires choosing priors, can be computationally expensive | Estimating the probability of stock price movements based on historical data and expert opinions |
 | **Chi-Square Tests**                   | Categorical                            | Independence, Large sample sizes        | When testing relationships between categorical variables | Testing independence or goodness of fit          | Easy to use with categorical data, robust for large samples | Can’t be used with small sample sizes or continuous data | Analyzing whether there is a relationship between gender and voting preference (categorical variables) |
-| **Multivariate and Advanced Methods**  | Multivariate (Continuous, Categorical) | Multivariate normality, Linearity       | When analyzing multiple variables or complex models | Examining relationships across multiple variables | Analyzes complex relationships and interactions    | Assumes linear relationships, can be complex to interpret | Analyzing the effect of marketing strategies on sales, customer age, and income levels |
 
 ----
 # Parametric Tests
@@ -16,17 +14,19 @@ This project will showcase advanced statistical methods for A/B testing and hypo
 
 ## Shapiro-Wilk Test (Normality Test)
 
-In many statistical tests (**t-tests**, **ANOVA**, **linear regression**) we assume that the data comes from a normal distribution. If this assumption is violated, the results of these tests might not be valid.
+In many statistical tests (`t-tests`, `ANOVA`, `linear regression`) we assume that the data comes from a normal distribution. If this assumption is violated, the results of these tests might not be valid.
 
-The **Shapiro-Wilk** test helps us to verify if the data meets this assumption, so we can decide wheter to proceed with parametric tests (**t-test** or **ANOVA**) or non-parametric (**Mann-Whitney U test**, **Kruskal-Wallis test**) but most of the case we don't need normarlity in non-parametric tests.
+The `Shapiro-Wilk` test helps us to verify if the data meets this assumption, so we can decide wheter to proceed with parametric tests (`t-test` or `ANOVA`) or non-parametric (`Mann-Whitney U test`, `Kruskal-Wallis test`) but most of the case we don't need normarlity in non-parametric tests.
 
-When not to use the **Shapiro-Wilk**:
+```markdown
+When not to use the Shapiro-Wilk:
 
-- If the dataset is large like more then 5000 values in **Shapiro-Wilk** test become too sensitive. minor deviations from normality lead to rejecting the null hypothesis even if the deviation is not practically significant. 
->
-- The **Shapiro-Wilk** test is only suitable for continuous numerical data. If the data is categorical (**gender**, **country**, **product type**), the normality test is not applicable.
->
-- If the data is highly skewed or has many outliers, it may violate the assumptions of the **Shapiro-Wilk** test, and the results might not be meaningful.
+- If the dataset is large like more then 5000 values in Shapiro-Wilk test become too sensitive. minor deviations from normality lead to rejecting the null hypothesis even if the deviation is not practically significant. 
+
+- The Shapiro-Wilk test is only suitable for continuous numerical data. If the data is categorical (gender, country, product type), the normality test is not applicable.
+
+- If the data is highly skewed or has many outliers, it may violate the assumptions of the Shapiro-Wilk test, and the results might not be meaningful.
+```
 
 ### Dataset
 Using `Iris Plants Database` in this test. The dataset contains a set of `150 records` under `5 attributes` - `Petal Length`, `Petal Width`, `Sepal Length`, `Sepal width` and Class(Species).
@@ -41,14 +41,14 @@ Using `Iris Plants Database` in this test. The dataset contains a set of `150 re
 
 `4. Petal Width: p-value = 1.8647596517271003e-08 (not normally, reject null hypothesis).`
 
-- Sepal Width is normally distributed, so parametric tests can be used.
-- Sepal Length, Petal Length, and Petal Width are not normally distributed. Here we have to use non-parametric tests or applying data transformation for these columns.
+- **Sepal Width is normally distributed, so parametric tests can be used.**
+- **Sepal Length, Petal Length, and Petal Width are not normally distributed. Here we have to use non-parametric tests or applying data transformation for these columns.**
 
----
+----
 
 ## Levene's Test for Equal Variance (Homogeneity of Variance)
 
-Levene's test is used to check the assumption of equal variances (also known as homogeneity of variances) across different groups or samples. This assumption is important for many statistical tests, such as `ANOVA` and `t-tests`, which require that the variability within each group being compared is similar. When variances are unequal (heteroscedasticity), it can lead to incorrect conclusions in statistical tests.
+Levene's test is used to check the assumption of equal variances (`also known as homogeneity of variances`) across different groups or samples. This assumption is important for many statistical tests, such as `ANOVA` and `t-tests`, which require that the variability within each group being compared is similar. When variances are unequal (heteroscedasticity), it can lead to incorrect conclusions in statistical tests.
 
 - The primary purpose of Levene’s test is to ensure that the assumption of equal variances holds before applying statistical tests that rely on this assumption (like One-Way ANOVA and t-test) and comparing more than two groups if the groups have similar variance
 
@@ -58,8 +58,8 @@ Levene's test is used to check the assumption of equal variances (also known as 
 - **Null Hypothesis (H₀):** The variances of the groups are equal (homogeneity of variances).
 
 - **Alternative Hypothesis (H₁):** The variances of the groups are not equal (heterogeneity of variances).
-### Dataset
-Using Housing Price Data for this test. This dataset has 3 Group of City. City 1, City 2, City 3 with Price Columns.
+### Dataset Description
+Using `Housing Price Data` for this test. This dataset has 3 Group of City. `City 1`, `City 2`, `City 3` with `Price` Columns.
 
 ![ alt text](img/levenestest.png)
 
@@ -67,11 +67,11 @@ Using Housing Price Data for this test. This dataset has 3 Group of City. City 1
 
 **Normality Check:**
 
-- **City 1:** The p-value is 0.9480, which is greater than 0.05, indicating that the data is normally distributed.
+- **City 1:** The p-value is `0.9480`, which is greater than `0.05`, indicating that the data is normally distributed.
 
-- **City 2:** The p-value is 0.1150, which is greater than 0.05, indicating that the data is normally distributed.
+- **City 2:** The p-value is `0.1150`, which is greater than `0.05`, indicating that the data is normally distributed.
 
-- **City 3:** The p-value is 0.6759, which is greater than 0.05, indicating that the data is normally distributed.
+- **City 3:** The p-value is `0.6759`, which is greater than `0.05`, indicating that the data is normally distributed.
 
 ![ alt text](img/levenestest2.png)
 
@@ -85,16 +85,16 @@ Using Housing Price Data for this test. This dataset has 3 Group of City. City 1
 
 Independent T-test also called two-sample T-test. It is a statistical method used to compare the means of two indenpendent groups to see statistically significant difference between them.
 
-Why and When we should use it ?
+**Why and When we should use it ?**
 - We use it to test hypotheses about group differences and it help us to understand any observed difference is real or due to random chance.
 - There is two independent groups.
 - Comparing the means of two numeric/continuous variable.
 - Data should be normally distributed.
 - Variances are assumed to be equal or testable.
 
-### Dataset
+### Dataset Description
 
-Python code to generate a perfect dataset for performing an Independent T-test. We'll create two independent groups (Group A and Group B) with normally distributed data, ensuring that they have different means, which will give us a noticeable difference when performing the T-test.
+Python code to generate a perfect dataset for performing an `Independent T-test`. We'll create two independent groups (`Group A` and `Group B`) with normally distributed data, ensuring that they have different means, which will give us a noticeable difference when performing the T-test.
 
         Score      Group
     0  54.967142     A
@@ -106,31 +106,31 @@ Python code to generate a perfect dataset for performing an Independent T-test. 
 ### Normality Test (Shapiro-Wilk Test)
 **Normality Check:**
 
-**Group A:** The p-value is 0.0.8290, which is greater than 0.05, indicating that the data is normally distributed.
+**Group A:** The p-value is `0.8290`, which is greater than `0.05`, indicating that the data is normally distributed.
 
-**Group B:** The p-value is 0.2498, which is greater than 0.05, indicating that the data is normally distributed.
+**Group B:** The p-value is `0.2498`, which is greater than `0.05`, indicating that the data is normally distributed.
 ![ alt text](img/independent_t_1.png)
 
 ### Levene's Test for Equality of Variance
 
 ![ alt text](img/independent_t_2.png)
 
-- The p-value is 0.5148 for Levene’s Test is greater than 0.05, which means we fail to reject the null hypothesis (H₀).
+- The p-value is `0.5148` for Levene’s Test is greater than `0.05`, which means we fail to reject the null hypothesis (H₀).
 
-- The variances of Group A and Group B are not significantly different, and we can assume that both groups have equal variances. This is an important assumption for performing the Independent T-test.
+- The variances of `Group A` and `Group B` are not significantly different, and we can assume that both groups have equal variances. This is an important assumption for performing the Independent T-test.
 
 ### Independent T-test Result
 
-- The p-value is 0.0000 extremely small (much less than 0.05), which means we reject the null hypothesis (H₀).
+- **The p-value is 0`.0000` extremely small (much less than `0.05`), which means we reject the null hypothesis (`H₀`).**
 
-- There is a statistically significant difference between Group A and Group B. Since the p-value is extremely small, this result strongly indicates that the difference between the two groups is not due to random chance.
+- **There is a statistically significant difference between Group A and Group B. Since the p-value is extremely small, this result strongly indicates that the difference between the two groups is not due to random chance.**
 
 ---
 ## Paired Sample T-Test (Before vs After Campaign)
 
 A Paired Sample T-test (also known as the Dependent Sample T-test) is a statistical test used to compare the means of two related groups. The test is used to determine whether there is a statistically significant difference between the two related groups.
 
-Why and When we should use it ?
+**Why and When we should use it ?**
 
 - Paired Sample T-test when we want to assess the effect of a treatment or intervention on a group of subject by comparing therir measurements before and after the treatment or intervention.
 
@@ -144,7 +144,7 @@ Why and When we should use it ?
 
 - **Repeated Measures:** When having repeated measurements from the same individuals under different conditions.
 
-### Dataset
+### Dataset Description
 #### Data Summary
 **Total Participants:** 30
 
@@ -164,7 +164,7 @@ Why and When we should use it ?
 
 ### Shapiro-Wilk Test for Normality of Differences
 
-`Shapiro-Wilk Test: Statistic = 0.984, p-value = 0.91296`
+**Shapiro-Wilk Test:** Statistic = `0.984`, p-value = `0.91296`
 
 `The differences between before and after weights appear to be normally distributed. We fail to reject the null hypothesis of normality.`
 
@@ -177,7 +177,7 @@ Why and When we should use it ?
 
 ![ alt text](img/pairedsamplettest2.png)
 
-`Paired Sample T-Test: T-statistic = 14.974, p-value = 0.00000`
+**Paired Sample T-Test:** T-statistic = `14.974`, p-value = `0.00000`
 
 `Reject the null hypothesis. There is a significant difference between before and after weights, indicating the diet program had an effect.`
 
@@ -187,7 +187,7 @@ Why and When we should use it ?
 
 ## ANOVA (Analysis of Variance)
 
-ANOVA (Analysis of Variance) is a statistical method used to analyze differences between group means and determine whether any of the group means are statistically significantly different from each other. It is essentially used to test if there is a significant variation between multiple groups based on one or more factors.
+ANOVA (`Analysis of Variance`) is a statistical method used to analyze differences between group means and determine whether any of the group means are statistically significantly different from each other. It is essentially used to test if there is a significant variation between multiple groups based on one or more factors.
 
 ANOVA is commonly used when comparing three or more groups or conditions. It is an extension of the t-test, which is used when comparing only two groups.
 
@@ -219,7 +219,7 @@ ANOVA is commonly used when comparing three or more groups or conditions. It is 
 
 - **Repeated Measures:** For repeated measurements on the same subjects.
 
-### Dataset
+### Dataset Description
 
 #### Data Summary
 
@@ -229,23 +229,23 @@ ANOVA is commonly used when comparing three or more groups or conditions. It is 
 
 - **score:** Continuous variable representing exam scores.
 
-- **method:** Categorical variable representing the teaching method used (Method A, Method B, Method C).
+- **method:** Categorical variable representing the teaching method used (`Method A`, `Method B`, `Method C`).
 
-- **gender:** Categorical variable representing the gender of the students (Male, Female).
+- **gender:** Categorical variable representing the gender of the students (`Male`, `Female`).
 
 **Groups:**
 
-- **Teaching Methods:** 3 categories (Method A, Method B, Method C).
+- **Teaching Methods:** 3 categories (`Method A`, `Method B`, `Method C`).
 
-- **Gender:** 2 categories (Male, Female).
+- **Gender:** 2 categories (`Male`, `Female`).
 
 - **Scores:** Exam scores are generated randomly with different means and standard deviations for each method:
 
-**Method A: Mean = 75, Std = 10**
+**Method A:** Mean = `75`, Std = `10`
 
-**Method B: Mean = 80, Std = 12**
+**Method B:** Mean = `80`, Std = `12`
 
-**Method C: Mean = 85, Std = 8**
+**Method C:** Mean = `85`, Std = `8`
 
               score	         method	       gender
     0	79.967142	Method A	Male
@@ -320,7 +320,7 @@ One-Way ANOVA: There is a significant difference between the methods.
 
 - **Sales:** Analyzing the relationship between advertising spending and sales performance.
 
-### Dataset
+### Dataset Description
 
 	            X	            Y
     0	54.967142	47.890288
@@ -371,7 +371,7 @@ The Mann-Whitney U test is a non-parametric test used to determine whether there
 
 - **Comparing two independent groups:** It is particularly useful when comparing two groups that are independent of each other.
 
-**When to use it**
+**When to use it ?**
 
 - When we want to compare two independent groups but cannot assume that the data follows a normal distribution.
 
@@ -381,7 +381,7 @@ The Mann-Whitney U test is a non-parametric test used to determine whether there
 
 - When the assumption of equal variances in the groups (required for the independent t-test) is not met.
 
-### Dataset
+### Dataset Description
           Class A Scores	Class B Scores	 Class A Study Hours	Class B Study Hours	Class A  Participation	Class B Participation
     0	79.967142	   72.779521	      4.281239	              6.174740	                9.582064	       9.051084
     1	73.617357	   102.227338	      4.721512	              7.743561	                6.181225	       9.262186
@@ -389,7 +389,7 @@ The Mann-Whitney U test is a non-parametric test used to determine whether there
     3	90.230299	   67.307469	      3.205690	              5.410208	                5.196298	       9.010958
     4	72.658466	   89.870539	      6.218789	              5.294205	                9.173714	       9.144759
 
-This dataset includes test scores, study hours, and participation scores for two groups of students (Class A and Class B), with 30 observations each.
+This dataset includes `test scores`, `study hours`, and `participation` scores for two groups of students (`Class A` and `Class B`), with 30 observations each.
 
 ![ alt text](img/MannWhitneyUTest.png)
 
@@ -397,8 +397,8 @@ This dataset includes test scores, study hours, and participation scores for two
 
 **Interpretation:**
 
-- U Statistic: 310.0
-- P-value: 0.0392 (rounded)
+- U Statistic: `310.0`
+- P-value: `0.0392` (rounded)
 
 **Since the p-value < 0.05, we reject the null hypothesis, indicating that there is a statistically significant difference in test scores between Class A and Class B.**
 
@@ -406,23 +406,23 @@ This dataset includes test scores, study hours, and participation scores for two
 
 ## Wilcoxon Signed-Rank Test
 
-The Wilcoxon Signed-Rank Test is a non-parametric statistical test used to determine whether there is a significant difference between the paired observations. It is the non-parametric equivalent of the paired sample t-test and is used for comparing two related samples or measurements taken from the same group.
+The Wilcoxon Signed-Rank Test is a `non-parametric` statistical test used to determine whether there is a significant difference between the paired observations. It is the `non-parametric` equivalent of the paired sample `t-test` and is used for comparing two related samples or measurements taken from the same group.
 
-**Why We Use It:**
-- The Wilcoxon Signed-Rank Test is used when the data are paired and do not meet the assumptions required for the paired t-test (e.g., normality).
+**Why we use it ?**
+- The Wilcoxon Signed-Rank Test is used when the data are paired and do not meet the assumptions required for the paired `t-test` (e.g., `normality`).
 
 - It is useful for assessing whether the median of the differences between the pairs is zero, which means there is no difference between the two conditions being compared.
 
 - This test is particularly appropriate for small sample sizes and data with outliers or skewed distributions.
 
-**When to Use It:**
-- When comparing two related or paired samples.
+**When we use it ?**
+- When comparing two `related` or `paired` samples.
 
-- When the data are ordinal, interval, or ratio but do not meet the assumptions of normality.
+- When the data are `ordinal`, `interval`, or `ratio` but do not meet the assumptions of `normality`.
 
-- It is commonly used in before-and-after experiments or matched-pair studies.
+- It is commonly used in before-and-after experiments or `matched-pair` studies.
 
-### Dataset
+### Dataset Description
 
             Student	     Before Training	After Training
     0	Student 1	   46	           48.106517
@@ -432,11 +432,11 @@ The Wilcoxon Signed-Rank Test is a non-parametric statistical test used to deter
     4	Student 5	   50	           50.643332
 
 
-- Number of Students: 30
+- **Number of Students:** `30`
 
-- Before Training Scores: Randomly generated integer scores between 40 and 70, representing test scores before training.
+- **Before Training Scores:** Randomly generated integer scores between `40` and `70`, representing test scores before training.
 
-- After Training Scores: Scores derived by adding a slight improvement (random integers between 3 and 12) to the original scores, with added random noise (normally distributed) to simulate variability.
+- **After Training Scores:** Scores derived by adding a slight improvement (random integers between `3` and `12`) to the original scores, with added random noise (normally distributed) to simulate variability.
 
 #### Before and After Training Scores
 
@@ -460,27 +460,27 @@ Reject the null hypothesis: There is a significant difference in scores before a
 
 **Interpretation:**
 
-Since the p-value is much smaller than the significance level (α = 0.05), we reject the null hypothesis. There is a significant difference in the test scores before and after the training, indicating that the training had an impact on the students' performance.
+Since the p-value is much smaller than the significance level (`α = 0.05`), we reject the null hypothesis. There is a significant difference in the test scores before and after the training, indicating that the training had an impact on the students' performance.
 
 ----
 
 ## Kruskal-Wallis Test
-The Kruskal-Wallis test is a non-parametric statistical test used to determine if there are significant differences between two or more independent groups. It is an extension of the Mann-Whitney U test to more than two groups and is used when the assumptions of one-way ANOVA (such as normality) are not met.
+The Kruskal-Wallis test is a `non-parametric` statistical test used to determine if there are significant differences between two or more independent groups. It is an extension of the `Mann-Whitney U test` to more than two groups and is used when the assumptions of `one-way ANOVA` (such as `normality`) are not met.
 
 **Why to use it ?**
-- The Kruskal-Wallis test is used when the data does not meet the assumptions of normality and homogeneity of variances required by ANOVA.
+- The Kruskal-Wallis test is used when the data does not meet the assumptions of `normality` and `homogeneity of variances` required by `ANOVA`.
 
-- It compares the ranks of the values across multiple groups rather than the means
+- It compares the ranks of the values across `multiple groups` rather than the means
 
-- it useful for ordinal data or continuous data that isn't normally distributed.
+- it useful for `ordinal data` or `continuous data` that isn't `normally distributed`.
 
 **When to use it ?**
 
-- When we have more than two independent groups.
+- When we have more than `two independent groups`.
 
-- When the dependent variable is ordinal or continuous but not normally distributed.
+- When the `dependent variable` is `ordinal` or `continuous` but not `normally distributed`.
 
-- When we cannot assume homogeneity of variances.
+- When we cannot assume `homogeneity of variances`.
 
 ### Dataset
     	Course	         Score
@@ -491,13 +491,13 @@ The Kruskal-Wallis test is a non-parametric statistical test used to determine i
     4	Course A	72.658466
 
 #### Data Summary
-**Number of Entries:** 90 (30 students in each of 3 courses)
+**Number of Entries:** `90` (`30` students in each of `3` courses)
 
 **Features:**
 
-**Course:** Categorical variable with three levels: "Course A", "Course B", "Course C".
+**Course:** Categorical variable with three levels: `Course A`, `Course B`, `Course C`.
 
-**Score:** Continuous variable representing student scores with normally distributed values for each course.
+**Score:** Continuous variable representing `student scores` with `normally distributed` values for each course.
 
 #### Visualization
 ##### Comparing Score Distributions
@@ -517,10 +517,10 @@ Reject the null hypothesis: There is a significant difference between the groups
 
 **Interpetation :**
 
-- Kruskal-Wallis H-statistic: 18.02
-- P-value: 0.00012
+- **Kruskal-Wallis H-statistic:** `18.02`
+- **P-value:** `0.00012`
 
-Since the p-value (0.00012) is less than the commonly used significance level of 0.05, we reject the null hypothesis.
+Since the p-value (`0.00012`) is less than the commonly used significance level of `0.05`, we reject the null hypothesis.
 
 ----
 
@@ -532,17 +532,17 @@ Since the p-value (0.00012) is less than the commonly used significance level of
 
 The Chi-Square Test of Independence is a statistical test used to determine if there is a significant relationship between two categorical variables. It tests whether the distribution of one variable is independent of the distribution of the other variable.
 
-Why we use it ?
+**Why we use it ?**
 
-- We use this test to check if two categorical variables are independent or associated.
+- We use this test to check if two categorical variables are `independent` or `associated`.
 
-When we use it ?
+**When we use it ?**
 
-- The Chi-Square Test of Independence is used when you have two categorical variables and you want to see if there is a relationship between them.
+- The Chi-Square Test of Independence is used when you have `two categorical variables` and you want to see if there is a relationship between them.
 
-- The variables should be independent and come from random samples.
+- The `variables` should be `independent` and come from `random samples`.
 
-- The categories within the variables should be mutually exclusive.
+- The `categories` within the `variables` should be `mutually exclusive`.
 
 ### Data Description
            Gender	Preference
@@ -555,15 +555,15 @@ When we use it ?
 #### Data Summary
 **Gender:**
 
-**Unique values:** 2 (Male, Female)
+**Unique values:** `2 (Male, Female)`
 
-**Most frequent value:** Male (1017 occurrences)
+**Most frequent value:** `Male` (`1017 occurrences`)
 
 **Preference:**
 
-**Unique values:** 3 (A, B, C)
+**Unique values:** `3 (A, B, C)`
 
-**Most frequent value:** A (698 occurrences)
+**Most frequent value:** `A` (`698 occurrences`)
 
 #### Data Visualization
 ![ alt text](img/ChiSquareTestofIndependence.png)
@@ -575,11 +575,11 @@ p-value: 0.7519461095939004
 Degrees of Freedom: 2
 Expected Frequencies: 
 [[339.972 332.1   311.928]
- [351.028 342.9   322.072]]
+[351.028 342.9   322.072]]
 Fail to reject the null hypothesis: No significant relationship between the variables.
 ```
 
-**Since the p-value is much greater than 0.05, we fail to reject the null hypothesis. This suggests that there is no significant relationship between the gender and preference variables in this dataset. In other words, gender does not appear to influence preference significantly.**
+**Since the p-value is much greater than `0.05`, we fail to reject the null hypothesis. This suggests that there is no significant relationship between the gender and preference variables in this dataset. In other words, gender does not appear to influence preference significantly.**
 
 ----
 
@@ -589,17 +589,17 @@ The Chi-Square Goodness of Fit test is a statistical test used to determine if a
 
 **Why we use it ?**
 
-- We use the Chi-Square Goodness of Fit test to assess how well the observed data fits a specific theoretical distribution.
+- We use the `Chi-Square Goodness of Fit` test to assess how well the observed data fits a specific `theoretical distribution`.
 
 - This helps us understand whether there is a significant difference between the expected and observed frequencies.
 
 **When we use it ?**
 
-- The data is categorical (nominal or ordinal).
+- The data is categorical (`nominal or ordinal`).
 
-- When we have a set of expected proportions or frequencies.
+- When we have a set of expected `proportions` or `frequencies`.
 
-- When we want to test if the observed data follows a particular distribution or if there are significant deviations.
+- When we want to test if the `observed data` follows a `particular distribution` or if there are `significant deviations`.
 
 ### Dataset
 
@@ -611,9 +611,9 @@ The Chi-Square Goodness of Fit test is a statistical test used to determine if a
     4	Soda	   243	      186.021505
 
 #### Data Summary
-**Total rows:** 10 (representing 10 types of drinks)
+**Total rows:** `10` (representing `10` types of drinks)
 
-**Total columns:** 3 (representing the drink type, observed frequencies, and expected frequencies)
+**Total columns:** `3` (representing the drink type, observed frequencies, and expected frequencies)
 
 **Drink column:** Contains the drink types.
 
