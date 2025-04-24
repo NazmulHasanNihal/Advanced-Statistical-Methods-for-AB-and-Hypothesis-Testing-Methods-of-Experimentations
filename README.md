@@ -524,6 +524,10 @@ Since the p-value (0.00012) is less than the commonly used significance level of
 
 ----
 
+# Chi-Square Tests
+
+----
+
 ## Chi-Square Test of Independence
 
 The Chi-Square Test of Independence is a statistical test used to determine if there is a significant relationship between two categorical variables. It tests whether the distribution of one variable is independent of the distribution of the other variable.
@@ -576,4 +580,69 @@ Fail to reject the null hypothesis: No significant relationship between the vari
 ```
 
 **Since the p-value is much greater than 0.05, we fail to reject the null hypothesis. This suggests that there is no significant relationship between the gender and preference variables in this dataset. In other words, gender does not appear to influence preference significantly.**
+
+----
+
+## Chi-Square Goodness of Fit
+
+The Chi-Square Goodness of Fit test is a statistical test used to determine if a sample data matches an expected distribution. It compares the observed frequency of events in each category to the expected frequency under the null hypothesis.
+
+**Why we use it ?**
+
+- We use the Chi-Square Goodness of Fit test to assess how well the observed data fits a specific theoretical distribution.
+
+- This helps us understand whether there is a significant difference between the expected and observed frequencies.
+
+**When we use it ?**
+
+- The data is categorical (nominal or ordinal).
+
+- When we have a set of expected proportions or frequencies.
+
+- When we want to test if the observed data follows a particular distribution or if there are significant deviations.
+
+### Dataset
+
+            Drink	Observed       Expected
+    0	Coffee	   111	      279.032258
+    1	Tea	   171	      186.021505
+    2	Juice	   157	      186.021505
+    3	Water	   225	      186.021505
+    4	Soda	   243	      186.021505
+
+#### Data Summary
+**Total rows:** 10 (representing 10 types of drinks)
+
+**Total columns:** 3 (representing the drink type, observed frequencies, and expected frequencies)
+
+**Drink column:** Contains the drink types.
+
+**Observed column:** Contains randomly generated observed values (based on simulated survey data).
+
+**Expected column:** Contains expected frequencies calculated using predefined proportions.
+
+#### Data Visualization
+##### (Observed vs Expected)
+![ alt text](img/ChiSquareGoodnessofFit1.png)
+##### (Observed Preferences Distribution)
+![ alt text](img/ChiSquareGoodnessofFit2.png)
+##### (Expected Preferences Distribution)
+![ alt text](img/ChiSquareGoodnessofFit3.png)
+##### (Distribution of Observed vs Expected)
+![ alt text](img/ChiSquareGoodnessofFit4.png)
+
+### Chi-Square Goodness of Fit
+```markdown
+Chi-Square Statistic: 257.25851981833193
+P-Value: 2.923832815953034e-50
+Reject the null hypothesis: Significant difference between observed and expected frequencies.
+```
+-  **Since the p-value is much smaller than the significance level (alpha = 0.05), we reject the null hypothesis.**
+
+-  **This means that there is a significant difference between the observed and expected frequencies. The observed data does not fit the expected distribution, indicating that the preferences for the drinks are not in line with the expected proportions.**
+
+----
+
+
+
 
