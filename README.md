@@ -424,6 +424,14 @@ The Wilcoxon Signed-Rank Test is a non-parametric statistical test used to deter
 
 ### Dataset
 
+            Student	     Before Training	After Training
+    0	Student 1	   46	           48.106517
+    1	Student 2	   59	           70.048483
+    2	Student 3	   68	           79.646000
+    3	Student 4	   54	           54.213166
+    4	Student 5	   50	           50.643332
+
+
 - Number of Students: 30
 
 - Before Training Scores: Randomly generated integer scores between 40 and 70, representing test scores before training.
@@ -455,5 +463,66 @@ Reject the null hypothesis: There is a significant difference in scores before a
 Since the p-value is much smaller than the significance level (α = 0.05), we reject the null hypothesis. There is a significant difference in the test scores before and after the training, indicating that the training had an impact on the students' performance.
 
 ----
+
+## Kruskal-Wallis Test
+The Kruskal-Wallis test is a non-parametric statistical test used to determine if there are significant differences between two or more independent groups. It is an extension of the Mann-Whitney U test to more than two groups and is used when the assumptions of one-way ANOVA (such as normality) are not met.
+
+**Why to use it ?**
+- The Kruskal-Wallis test is used when the data does not meet the assumptions of normality and homogeneity of variances required by ANOVA.
+
+- It compares the ranks of the values across multiple groups rather than the means
+
+- it useful for ordinal data or continuous data that isn't normally distributed.
+
+**When to use it ?**
+
+- When we have more than two independent groups.
+
+- When the dependent variable is ordinal or continuous but not normally distributed.
+
+- When we cannot assume homogeneity of variances.
+
+### Dataset
+    	Course	         Score
+    0	Course A	79.967142
+    1	Course A	73.617357
+    2	Course A	81.476885
+    3	Course A	90.230299
+    4	Course A	72.658466
+
+#### Data Summary
+**Number of Entries:** 90 (30 students in each of 3 courses)
+
+**Features:**
+
+**Course:** Categorical variable with three levels: "Course A", "Course B", "Course C".
+
+**Score:** Continuous variable representing student scores with normally distributed values for each course.
+
+#### Visualization
+##### Comparing Score Distributions
+![ alt text](img/KruskalWallisTest1.png)
+#### Distributions + KDE
+![ alt text](img/KruskalWallisTest2.png)
+#### Overlayed Distributions
+![ alt text](img/KruskalWallisTest3.png)
+
+### Kruskal-Wallis Test
+
+```markdown
+Kruskal-Wallis H-statistic: 18.023150183150165
+P-value: 0.0001219895598887542
+Reject the null hypothesis: There is a significant difference between the groups.
+```
+
+**Interpetation :**
+
+- Kruskal-Wallis H-statistic: 18.02
+- P-value: 0.00012
+
+Since the p-value (0.00012) is less than the commonly used significance level of 0.05, we reject the null hypothesis.
+
+----
+
 
 
